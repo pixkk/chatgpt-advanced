@@ -10,7 +10,7 @@ Browser.runtime.onInstalled.addListener(async () => openChatGPTWebpage())
 
 function openChatGPTWebpage() {
     Browser.tabs.create({
-        url: "https://chat.openai.com/chat",
+        url: "https://chatgpt.com/",
     })
 }
 
@@ -24,7 +24,7 @@ Browser.commands.onCommand.addListener(async (command) => {
     if (command === "toggle-web-access") {
         Browser.tabs.query({ active: true, currentWindow: true }).then((tabs) => {
             const tab = tabs[0]
-            if (tab.url && tab.id && tab.url.startsWith("https://chat.openai.com/")) {
+            if (tab.url && tab.id && tab.url.startsWith("https://chatgpt.com/")) {
                 Browser.tabs.sendMessage(tab.id, "toggle-web-access")
             }
         })
